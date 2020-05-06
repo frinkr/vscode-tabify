@@ -3,6 +3,7 @@
 	"displayName": "tabify",
 	"description": "Tabify and untabify the selected texts",
 	"version": "0.0.1",
+	"publisher": "frinkr",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
