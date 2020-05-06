@@ -4,6 +4,10 @@
 	"description": "Tabify and untabify the selected texts",
 	"version": "0.0.1",
 	"publisher": "frinkr",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/frinkr/vscode-tabify.git"
+	},
 	"engines": {
 		"vscode": "^1.44.0"
 	},
@@ -16,8 +20,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "vscode-tabify.tabify",
 				"title": "tabify"
 			},
