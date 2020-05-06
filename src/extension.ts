@@ -8,13 +8,24 @@ export function activate(context: vscode.ExtensionContext) {
 
 	function escapeRegExp(str: string) {
 		return str.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-	  }
+	}
+
+	function tabSize() {
+		let editor = vscode.window.activeTextEditor;
+		if (editor && editor.options.tabSize) {
+			return +editor.options.tabSize;
+		}
+		else {
+			return 4;
+		}
+	}
 
 	function replace(from: string, to: string) {
 		let editor = vscode.window.activeTextEditor;
 
 		if (editor) {
 			let document = editor.document;
+
 			let selection = editor.selection;
 
 			// Get the word within the selection
@@ -28,11 +39,11 @@ export function activate(context: vscode.ExtensionContext) {
 	};
 
 	let disposableTabify = vscode.commands.registerCommand('vscode-tabify.tabify', () => {
-		replace("    ", "\t");
+		replace(" ".repeat(tabSize()), "\t");
 	});
 
 	let disposableUntabify = vscode.commands.registerCommand('vscode-tabify.untabify', () => {
-		replace("\t", "    ");
+		replace("\t", " ".repeat(tabSize()));
 	});
 
 	context.subscriptions.push(disposableTabify);
@@ -40,4 +51,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
